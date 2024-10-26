@@ -8,19 +8,19 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Enable global validation pipe
+  // Enable ValidationPipe with transform option and sanitize
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true, // Strip properties without decorators
-      forbidNonWhitelisted: true, // Throw error on unknown properties
-      transform: true, // Transform payloads to DTO instances
+      transform: true,      
+      whitelist: true,     
+      forbidNonWhitelisted: true,  
     }),
   );
 
-  // Allow class-validator to use NestJS modules (optional)
+  // Allow class-validator to use NestJS modules
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
 
-  // Set up Swagger (we'll cover this in the next section)
+  // Set up Swagger
   const config = new DocumentBuilder()
     .setTitle('Smartcar API')
     .setDescription('API documentation for the Smartcar service')

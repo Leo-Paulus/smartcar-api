@@ -56,6 +56,36 @@ cd smartcar-api
   <li><strong>POST /vehicles/:id/engine</strong>: Start or stop the vehicle's engine.</li>
 </ul>
 
+<h2>Testing</h2>
+
+<p>
+  The application uses Jest for unit testing. Tests are located in the
+  <code>src/vehicles/</code> directory.
+</p>
+
+<h3>Running Tests</h3>
+
+<p>To run all tests:</p>
+
+<pre><code>npm run test
+</code></pre>
+
+<p>
+  To run tests in watch mode (re-runs tests on file changes):
+</p>
+
+<pre><code>npm run test:watch
+</code></pre>
+
+<p>To generate a test coverage report:</p>
+
+<pre><code>npm run test:cov
+</code></pre>
+
+<p>
+  The coverage report will be generated in the <code>coverage/</code> directory.
+</p>
+
 <h2>Technologies Used</h2>
 
 <ul>
@@ -66,3 +96,4 @@ cd smartcar-api
   <li><strong>Class-Validator</strong></li>
   <li><strong>Class-Transformer</strong></li>
 </ul>
+
