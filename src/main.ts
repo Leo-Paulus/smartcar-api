@@ -4,16 +4,18 @@ import { NestFactory } from '@nestjs/core';
 import { useContainer } from 'class-validator';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import helmet from 'helmet';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.use(helmet()); // Secures HTTP headers
 
   // Enable ValidationPipe with transform option and sanitize
   app.useGlobalPipes(
     new ValidationPipe({
-      transform: true,      
-      whitelist: true,     
-      forbidNonWhitelisted: true,  
+      transform: true, // Transforms the data to the DTO
+      whitelist: true, // Strips away any extra properties
+      forbidNonWhitelisted: true, // Throws an error if extra properties are present
     }),
   );
 
