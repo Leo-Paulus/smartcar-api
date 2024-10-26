@@ -12,6 +12,7 @@
   <li><strong>Node.js</strong> (version 14 or higher)</li>
   <li><strong>npm</strong> or <strong>Yarn</strong></li>
   <li><strong>Nest.js CLI</strong> (optional but recommended)</li>
+  <li><strong>Docker</strong> (optional but recommended for containerized deployment)</li>
 </ul>
 
 <h3>Installation</h3>
@@ -28,6 +29,15 @@ cd smartcar-api
     <pre><code>npm install
 </code></pre>
   </li>
+  <li>
+    <strong>Create a .env File</strong>
+    <p>
+      Ensure that you create a <code>.env</code> file in the root directory of the project, and update the docker-compose.yml environment section, with the following content (in a real project, this would not be shared here, but for the sake of simplicity, I'll add it):
+    </p>
+    <pre><code>
+GM_API_URL=http://gmapi.azurewebsites.net 
+</code></pre>
+  </li>
 </ol>
 
 <h3>Running the Application</h3>
@@ -38,6 +48,23 @@ cd smartcar-api
 </code></pre>
 
 <p>The application will start on port <code>3000</code> by default.</p>
+
+<h2>Running with Docker</h2>
+
+<p>To run the application using Docker, follow these steps:</p>
+
+<ol>
+  <li>Build the Docker image:</li>
+  <pre><code>docker build -t smartcar-api .</code></pre>
+
+  <li>Run the Docker container:</li>
+  <pre><code>docker run -p 3000:3000 smartcar-api</code></pre>
+
+  <li>The application will be accessible at <code>http://localhost:3000</code>.</li>
+
+  <li>If you are using Docker Compose with additional services (like a database), use the following command:</li>
+  <pre><code>docker-compose up --build</code></pre>
+</ol>
 
 <h2>API Documentation</h2>
 
@@ -55,6 +82,18 @@ cd smartcar-api
   <li><strong>GET /vehicles/:id/battery</strong>: Get the battery level of the vehicle.</li>
   <li><strong>POST /vehicles/:id/engine</strong>: Start or stop the vehicle's engine.</li>
 </ul>
+
+<h2>Linter</h2>
+
+<p>This project uses <strong>ESLint</strong> to enforce coding standards and best practices.</p>
+
+<h3>Running the Linter</h3>
+
+<p>To check for linting errors and automatically fix them:</p>
+
+<pre><code>npm run lint</code></pre>
+
+<p>This will run ESLint on all the TypeScript files in the project.</p>
 
 <h2>Testing</h2>
 
@@ -95,5 +134,7 @@ cd smartcar-api
   <li><strong>Swagger</strong></li>
   <li><strong>Class-Validator</strong></li>
   <li><strong>Class-Transformer</strong></li>
+  <li><strong>ESLint</strong></li>
+  <li><strong>Docker</strong></li>
+  <li><strong>Helmet</strong></li>
 </ul>
-

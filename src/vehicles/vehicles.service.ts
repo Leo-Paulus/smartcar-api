@@ -15,6 +15,7 @@ export class VehiclesService {
     this.gmApiUrl = this.configService.get<string>('GM_API_URL');
   }
 
+  // Helper function to post data to the GM API
   private async postToGmApi(endpoint: string, data: object): Promise<any> {
     try {
       const response = await axios.post(`${this.gmApiUrl}/${endpoint}`, {
