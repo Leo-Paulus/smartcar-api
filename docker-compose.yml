@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: smartcar-api
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      GM_API_URL: http://gmapi.azurewebsites.net
+    volumes:
+      - .:/usr/src/app
+    command: npm run start:prod
