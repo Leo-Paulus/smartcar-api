@@ -25,7 +25,7 @@ export class VehiclesService {
     } catch (error) {
       throw new HttpException(
         'Failed to communicate with the GM API',
-        HttpStatus.INTERNAL_SERVER_ERROR,
+        HttpStatus.INTERNAL_SERVER_ERROR, error
       );
     }
   }
